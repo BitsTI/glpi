@@ -135,10 +135,6 @@ See :
 * [Plugin directory](http://plugins.glpi-project.org)
 * [Plugin development documentation](http://glpi-developer-documentation.readthedocs.io/en/master/plugins/index.html)
 
-
-## Support
-GLPI is a living software. Improvements are continuously made, new functionalities are being developed, and issues are being fixed.
-
 To ease support and development, we need your help when encountering issues.
 There is a GLPI version typical lifecycle:
  * A new major version (9.3) is released.
