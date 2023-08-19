@@ -4954,6 +4954,7 @@ CREATE TABLE `glpi_notifications` (
   `date_mod` timestamp NULL DEFAULT NULL,
   `date_creation` timestamp NULL DEFAULT NULL,
   `allow_response` tinyint NOT NULL DEFAULT '1',
+  `attach_documents` tinyint NOT NULL DEFAULT '-2',
   PRIMARY KEY (`id`),
   KEY `name` (`name`),
   KEY `itemtype` (`itemtype`),
@@ -5967,6 +5968,7 @@ CREATE TABLE `glpi_projecttasks` (
   `is_recursive` tinyint NOT NULL DEFAULT '0',
   `projects_id` int unsigned NOT NULL DEFAULT '0',
   `projecttasks_id` int unsigned NOT NULL DEFAULT '0',
+  `is_deleted` tinyint NOT NULL DEFAULT '0',
   `date_creation` timestamp NULL DEFAULT NULL,
   `date_mod` timestamp NULL DEFAULT NULL,
   `plan_start_date` timestamp NULL DEFAULT NULL,
@@ -5991,6 +5993,7 @@ CREATE TABLE `glpi_projecttasks` (
   KEY `is_recursive` (`is_recursive`),
   KEY `projects_id` (`projects_id`),
   KEY `projecttasks_id` (`projecttasks_id`),
+  KEY `is_deleted` (`is_deleted`),
   KEY `date_creation` (`date_creation`),
   KEY `date_mod` (`date_mod`),
   KEY `users_id` (`users_id`),
@@ -6171,6 +6174,9 @@ CREATE TABLE `glpi_queuednotifications` (
   `documents` text,
   `mode` varchar(20) NOT NULL COMMENT 'See Notification_NotificationTemplate::MODE_* constants',
   `event` varchar(255) DEFAULT NULL,
+  `attach_documents` tinyint NOT NULL DEFAULT '0',
+  `itemtype_trigger` varchar(255) DEFAULT NULL,
+  `items_id_trigger` int unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `item` (`itemtype`,`items_id`,`notificationtemplates_id`),
   KEY `is_deleted` (`is_deleted`),
@@ -6180,7 +6186,8 @@ CREATE TABLE `glpi_queuednotifications` (
   KEY `send_time` (`send_time`),
   KEY `sent_time` (`sent_time`),
   KEY `mode` (`mode`),
-  KEY `notificationtemplates_id` (`notificationtemplates_id`)
+  KEY `notificationtemplates_id` (`notificationtemplates_id`),
+  KEY `item_trigger` (`itemtype_trigger`,`items_id_trigger`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 

@@ -873,7 +873,7 @@ class Html
                     $outer_style .= 'border: 1px solid ' . $params['colors']['border'] . ';';
                 }
             }
-            $inner_style = 'width: 0%;';
+            $inner_style = 'width: 0%; overflow: visible;';
             $inner_class = 'progress-bar';
             if (!$apply_custom_colors) {
                 $inner_class .= ' progress-bar-striped bg-info';
@@ -1257,6 +1257,7 @@ HTML;
 
         $tpl_vars['js_files'][] = ['path' => 'public/lib/base.js'];
         $tpl_vars['js_files'][] = ['path' => 'js/webkit_fix.js'];
+        $tpl_vars['js_modules'][] = ['path' => 'public/build/vue/app.js'];
         $tpl_vars['js_files'][] = ['path' => 'js/common.js'];
 
         if ($_SESSION['glpi_use_mode'] === Session::DEBUG_MODE) {
